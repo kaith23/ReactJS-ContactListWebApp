@@ -146,7 +146,7 @@ let Update = (currentId, setCurrentId) => {
       registeredDate
     );
     setMistake(setError);
-    return Object.values(setError).every((er) => er === "");
+    return Object.values(setError).every((er) => er !== "");
   };
 
   //  console.log(postData.errorMessage?.fullName);
@@ -160,23 +160,23 @@ let Update = (currentId, setCurrentId) => {
 
     const { fullName, emailAddress, contactNumber, location, registeredDate } =
       postData;
+    const hasError = validation(
+      fullName,
+      emailAddress,
+      contactNumber,
+      location,
+      registeredDate
+    )
+    console.log('asd', hasError);
 
-    if (
-      validation(
-        fullName,
-        emailAddress,
-        contactNumber,
-        location,
-        registeredDate
-      )
-    ) {
+    if (hasError) {
       console.log("HEHEHE");
       console.log(postData);
       dispatch(updatePost(currentId, postData));
       // if (currentId === 0) {
       //   dispatch(createPost(postData));
       //   clear();
-      //   window.location.reload();
+        window.location.replace('/create');
       // } else {
       //   dispatch(updatePost(currentId, postData));
       //   clear();
@@ -228,7 +228,6 @@ let Update = (currentId, setCurrentId) => {
         </Button> */}
         <Button
           onClick={handleSubmit}
-          // href="/create"
         >
           YES
         </Button>
