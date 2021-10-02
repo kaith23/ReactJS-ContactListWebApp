@@ -97,25 +97,34 @@ const Form = ({ currentId, setCurrentId }) => {
 
   console.log(postData.errorMessage?.fullName);
   // END FOR VALIDATION
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(postData);
 
     const { fullName, emailAddress, contactNumber, location, registeredDate } =
       postData;
-    //FOR VALIDATION
-    if (validation(fullName, emailAddress, contactNumber , location, registeredDate)) {
 
-    console.log(postData);
-
-    if (currentId === 0) {
-      console.log("sfs");
-      dispatch(createPost(postData));
-      clear();
-      window.location.reload();
-    }
-    }
     //FOR VALIDATION
+    if (
+      validation(
+        fullName,
+        emailAddress,
+        contactNumber,
+        location,
+        registeredDate
+      )
+    ) {
+      console.log(postData);
+
+      if (currentId === 0) {
+        console.log("sfs");
+        dispatch(createPost(postData));
+        clear();
+        window.location.reload();
+      }
+    }
+    //END FOR VALIDATION
   };
 
   const [location, setLocation] = React.useState("");
@@ -131,6 +140,7 @@ const Form = ({ currentId, setCurrentId }) => {
           <Avatar className={classes.avatar}>
             <AccountCircleIcon />
           </Avatar>
+
           <Typography variant="h5">Create contacts</Typography>
           <form className={classes.form} onSubmit={handleSubmit}>
             <Grid container spacing={2}>
@@ -149,6 +159,7 @@ const Form = ({ currentId, setCurrentId }) => {
                   label="Full Name"
                 />
               </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   id="outlined-error-helper-text"
@@ -166,6 +177,7 @@ const Form = ({ currentId, setCurrentId }) => {
                   label="Email Address"
                 />
               </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   id="outlined-error-helper-text"
@@ -183,6 +195,7 @@ const Form = ({ currentId, setCurrentId }) => {
                   label="Contact Number"
                 />
               </Grid>
+
               <Grid item xs={12}>
                 <MenuItem
                   fullWidth
@@ -212,6 +225,7 @@ const Form = ({ currentId, setCurrentId }) => {
                 </MenuItem>
                 <p>{mistake.location}</p>
               </Grid>
+
               <Grid item xs={12}>
                 Registered Date
                 <TextField
@@ -225,10 +239,10 @@ const Form = ({ currentId, setCurrentId }) => {
                     setPostData({ ...postData, registeredDate: e.target.value })
                   }
                   fullWidth
-                  // label="Registered Date"
                 />
               </Grid>
             </Grid>
+
             <Button
               type="submit"
               fullWidth

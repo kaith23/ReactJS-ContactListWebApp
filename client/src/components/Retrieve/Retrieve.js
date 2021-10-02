@@ -6,12 +6,9 @@ import CardContent from "@material-ui/core/CardContent";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
 import { useDispatch } from "react-redux";
-
 import Navbar from "../Navbar/Navbar";
 import { Grid } from "@material-ui/core";
-
 import Modal from "@material-ui/core/Modal";
 import { deletePost } from "../../actions/posts";
 import { useParams } from "react-router";
@@ -60,7 +57,6 @@ const Delete = () => {
   const xregisteredDate = id.split("*").slice(5, 6).join(" ");
 
   const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
 
@@ -94,7 +90,6 @@ const Delete = () => {
   return (
     <>
       <Navbar />
-      {/* <Grid container spacing={2}> */}
       <Grid item sm={5}>
         <Card className={classes.root}>
           <CardContent>
@@ -106,6 +101,7 @@ const Delete = () => {
               ID: &nbsp; {xid}
               <span></span>
             </Typography>
+
             <Typography
               className={classes.title}
               color="textSecondary"
@@ -146,6 +142,7 @@ const Delete = () => {
               Registered Date: {xregisteredDate}
             </Typography>
           </CardContent>
+
           <CardActions>
             <div>
               <Button

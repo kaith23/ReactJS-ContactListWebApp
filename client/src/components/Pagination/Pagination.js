@@ -12,9 +12,9 @@ const Pagination = () => {
         type="submit"
         variant="contained"
         color="primary"
-        onClick={() => {
-          console.info("I'm a button.");
-        }}
+        // onClick={() => {
+        //   console.info("I'm a button.");
+        // }}
         href="/create"
       >
         Back

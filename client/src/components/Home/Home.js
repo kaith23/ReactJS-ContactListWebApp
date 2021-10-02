@@ -10,6 +10,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts);
   const [currentId, setCurrentId] = useState(0);
+
   useEffect(() => {
     dispatch(getPosts());
   }, [currentId]);
@@ -20,20 +21,8 @@ const Home = () => {
         <Grid item xs={12} sm={4}>
           <Form setCurrentId={setCurrentId} currentId={currentId} />
         </Grid>
+
         <Grid item xs={12} sm={7}>
-          {/* <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            float="right"
-            onClick={() => {
-              console.info("I'm a button.");
-            }}
-            href="/pagination"
-          >
-            Show Full Contacts
-          </Button> */}
-          <br />
           <DataTable posts={posts} setCurrentId={setCurrentId} />
         </Grid>
       </Grid>

@@ -7,12 +7,6 @@ import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import { DataGrid } from "@material-ui/data-grid";
 import { IconButton } from "@material-ui/core";
 
-// const useStyles = makeStyles({
-//   table: {
-//     minWidth: 650,
-//   },
-// });
-
 const DataTable = ({ posts, setCurrentId }) => {
   const dispatch = useDispatch();
 
@@ -37,7 +31,6 @@ const DataTable = ({ posts, setCurrentId }) => {
     {
       field: "contactNumber",
       headerName: "ContactNumber",
-      // type: "number",
       width: 200,
     },
     {
@@ -61,11 +54,7 @@ const DataTable = ({ posts, setCurrentId }) => {
               <Link
                 to={`/delete/${params.row._id}*${params.row.fullName}*${params.row.emailAddress}*${params.row.contactNumber}*${params.row.location}*${params.row.registeredDate}`}
               >
-                <DeleteIcon
-                  fontSize="small"
-                  color="primary"
-                  // onClick={() => dispatch(deletePost(params.row._id))}
-                />
+                <DeleteIcon fontSize="small" color="primary" />
               </Link>
             </IconButton>
 
@@ -73,11 +62,7 @@ const DataTable = ({ posts, setCurrentId }) => {
               <Link
                 to={`/update/${params.row._id}*${params.row.fullName}*${params.row.emailAddress}*${params.row.contactNumber}*${params.row.location}*${params.row.registeredDate}`}
               >
-                <CreateIcon
-                  fontSize="small"
-                  color="primary"
-                  // onClick={() => setCurrentId(params.row._id)}
-                />
+                <CreateIcon fontSize="small" color="primary" />
               </Link>
             </IconButton>
 
@@ -85,11 +70,7 @@ const DataTable = ({ posts, setCurrentId }) => {
               <Link
                 to={`/retrieve/${params.row._id}*${params.row.fullName}*${params.row.emailAddress}*${params.row.contactNumber}*${params.row.location}*${params.row.registeredDate}`}
               >
-                <AccountBoxIcon
-                  fontSize="small"
-                  color="primary"
-                  // onClick={() => setCurrentId(params.row._id)}
-                />
+                <AccountBoxIcon fontSize="small" color="primary" />
               </Link>
             </IconButton>
           </>

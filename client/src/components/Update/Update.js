@@ -1,31 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-
-import {
-  Container,
-  Grid,
-  TextField,
-  Button,
-  Typography,
-  Avatar,
-  Paper,
-} from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
+import { Grid, TextField, Button, Typography } from "@material-ui/core";
+import { useDispatch } from "react-redux";
 import { setErrors } from "../../components/Validation/Validation";
-import { createPost, updatePost } from "../../actions/posts";
-
+import { updatePost } from "../../actions/posts";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-
-import Link from "@material-ui/core/Link";
 import { useParams } from "react-router";
-
 import Navbar from "../Navbar/Navbar";
-
 import Modal from "@material-ui/core/Modal";
-
 
 const locations = [
   {
@@ -73,14 +58,12 @@ const useStyles = makeStyles((theme) => ({
 let Update = (currentId, setCurrentId) => {
   let { UpdateId } = useParams();
 
-   currentId = UpdateId.split("*").slice(0, 1).join(" ");
+  currentId = UpdateId.split("*").slice(0, 1).join(" ");
   const xfullName = UpdateId.split("*").slice(1, 2).join(" ");
   const xemailAddress = UpdateId.split("*").slice(2, 3).join(" ");
   const xcontactNumber = UpdateId.split("*").slice(3, 4).join(" ");
   const xlocation = UpdateId.split("*").slice(4, 5).join(" ");
   const xregisteredDate = UpdateId.split("*").slice(5, 6).join(" ");
-
-  // console.log(props.match.params.id)
 
   const [postData, setPostData] = useState({
     fullName: xfullName,
@@ -99,37 +82,8 @@ let Update = (currentId, setCurrentId) => {
     registeredDate: "",
   });
 
-  // const post = useSelector((state) =>
-  //   currentId ? state.posts.find((message) => message._id === currentId) : null
-  // );
-
   const dispatch = useDispatch();
   const classes = useStyles();
-
-  // useEffect(() => {
-  //   if (post) {
-  //     setPostData(post);
-  //   } else {
-  //     setPostData({
-  //       fullName: "",
-  //       emailAddress: "",
-  //       contactNumber: "",
-  //       location: "",
-  //       registeredDate: "",
-  //     });
-  //   }
-  // }, [post]);
-
-  // const clear = () => {
-  //   setCurrentId(0);
-  //   setPostData({
-  //     fullName: "",
-  //     emailAddress: "",
-  //     contactNumber: "",
-  //     location: "",
-  //     registeredDate: "",
-  //   });
-  // };
 
   const validation = (
     fullName,
@@ -149,14 +103,10 @@ let Update = (currentId, setCurrentId) => {
     return Object.values(setError).every((er) => er !== "");
   };
 
-  //  console.log(postData.errorMessage?.fullName);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     console.log("Mistake", mistake);
-
-    // console.log(postData);
 
     const { fullName, emailAddress, contactNumber, location, registeredDate } =
       postData;
@@ -166,21 +116,15 @@ let Update = (currentId, setCurrentId) => {
       contactNumber,
       location,
       registeredDate
-    )
-    console.log('asd', hasError);
+    );
+    console.log("asd", hasError);
 
     if (hasError) {
       console.log("HEHEHE");
       console.log(postData);
       dispatch(updatePost(currentId, postData));
-      // if (currentId === 0) {
-      //   dispatch(createPost(postData));
-      //   clear();
-        window.location.replace('/create');
-      // } else {
-      //   dispatch(updatePost(currentId, postData));
-      //   clear();
-      // }
+
+      window.location.replace("/create");
     }
   };
 
@@ -190,7 +134,6 @@ let Update = (currentId, setCurrentId) => {
     setLocation(event.target.value);
   };
 
-  // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
 
@@ -210,6 +153,7 @@ let Update = (currentId, setCurrentId) => {
       <Typography className={classes.title} color="textSecondary" gutterBottom>
         Email Address:{postData.emailAddress}
       </Typography>
+
       <Typography className={classes.title} color="textSecondary" gutterBottom>
         Contact Number:{postData.contactNumber}
       </Typography>
@@ -217,20 +161,9 @@ let Update = (currentId, setCurrentId) => {
       <Typography className={classes.title} color="textSecondary" gutterBottom>
         Location:{postData.location}
       </Typography>
+
       <ButtonGroup disableElevation variant="contained" color="primary">
-        {/* <Button
-          onClick={() => {
-            console.log(postData.contactNumber)
-          }}
-          // href="/create"
-        >
-          YES
-        </Button> */}
-        <Button
-          onClick={handleSubmit}
-        >
-          YES
-        </Button>
+        <Button onClick={handleSubmit}>YES</Button>
         <Button>NO</Button>
       </ButtonGroup>
     </div>
@@ -239,7 +172,6 @@ let Update = (currentId, setCurrentId) => {
   return (
     <>
       <Navbar />
-      {/* <Grid container spacing={2}> */}
       <Grid item sm={5}>
         <Card className={classes.root}>
           <CardContent>
@@ -321,9 +253,7 @@ let Update = (currentId, setCurrentId) => {
                 name="location"
                 placeholder=""
               >
-                <option hidden>
-                  Select Location
-                </option>
+                <option hidden>Select Location</option>
                 <option value="Manila">Manila</option>
                 <option value="Cebu">Cebu</option>
               </select>
@@ -337,6 +267,7 @@ let Update = (currentId, setCurrentId) => {
               Registered Date:{xregisteredDate}
             </Typography>
           </CardContent>
+
           <CardActions>
             <div>
               <Button
@@ -351,6 +282,7 @@ let Update = (currentId, setCurrentId) => {
                 Back
               </Button>
             </div>
+
             <div>
               <Button
                 type="submit"
@@ -360,6 +292,7 @@ let Update = (currentId, setCurrentId) => {
               >
                 Save
               </Button>
+
               <Modal
                 open={open}
                 onClose={handleClose}
@@ -375,6 +308,5 @@ let Update = (currentId, setCurrentId) => {
     </>
   );
 };
-
 
 export default Update;

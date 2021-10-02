@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     flex: 10,
     backgroundImage: `url(https://www.electronics.ca/wp/wp-content/uploads/2014/05/high-tech-markets-963x350.jpg)`,
     backgroundSize: "cover",
-
   },
 
   button: {
@@ -30,8 +29,8 @@ const SimpleCard = () => {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography variant="h4" component="h6"style={{ color: 'white' }} >
-         <b> Manage Your Contacts Now!</b>
+        <Typography variant="h4" component="h6" style={{ color: "white" }}>
+          <b> Manage Your Contacts Now!</b>
         </Typography>
       </CardContent>
       <CardActions className={classes.button}>
