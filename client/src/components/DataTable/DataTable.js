@@ -54,7 +54,7 @@ const DataTable = ({ posts, setCurrentId }) => {
               <Link
                 to={`/delete/${params.row._id}*${params.row.fullName}*${params.row.emailAddress}*${params.row.contactNumber}*${params.row.location}*${params.row.registeredDate}`}
               >
-                <DeleteIcon fontSize="small" color="primary" />
+                <DeleteIcon fontSize="small" color="secondary" />
               </Link>
             </IconButton>
 

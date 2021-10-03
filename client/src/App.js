@@ -6,7 +6,6 @@ import SimpleCard from "./components/SimpleCard/SimpleCard";
 import Retrieve from "./components/Retrieve/Retrieve";
 import Update from "./components/Update/Update";
 import Delete from "./components/Delete/Delete";
-
 const App = () => {
   const [currentId, setCurrentId] = useState(0);
   console.log(currentId);
@@ -14,7 +13,7 @@ const App = () => {
     <Container>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={SimpleCard} />
+          <Route exact path="/" component={SimpleCard} />
 
           <Route path="/create">
             <Home currentId={currentId} setCurrentId={setCurrentId} />

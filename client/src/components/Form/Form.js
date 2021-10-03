@@ -197,33 +197,25 @@ const Form = ({ currentId, setCurrentId }) => {
               </Grid>
 
               <Grid item xs={12}>
-                <MenuItem
+                <select
                   fullWidth
                   label="Location"
-                  helperText={mistake.location}
-                  variant="outlined"
+                  id="standard-select-location"
+                  className="form-select custom-select mr-sm-2 form-control"
+                  aria-label="Default select example"
+                  onChange={(e) =>
+                    setPostData({ ...postData, location: e.target.value })
+                  }
+                  value={postData.location}
+                  name="location"
                 >
-                  <select
-                    fullWidth
-                    label="Location"
-                    id="standard-select-location"
-                    className="form-select custom-select mr-sm-2 form-control"
-                    aria-label="Default select example"
-                    onChange={(e) =>
-                      setPostData({ ...postData, location: e.target.value })
-                    }
-                    value={postData.location}
-                    name="location"
-                    placeholder=""
-                  >
-                    <option value="" hidden>
-                      Select Location
-                    </option>
-                    <option value="Manila">Manila</option>
-                    <option value="Cebu">Cebu</option>
-                  </select>{" "}
-                </MenuItem>
-                <p>{mistake.location}</p>
+                  <option value="" hidden>
+                    Select Location
+                  </option>
+                  <option value="Manila">Manila</option>
+                  <option value="Cebu">Cebu</option>
+                </select>{" "}
+                <p id="location">{mistake.location}</p>
               </Grid>
 
               <Grid item xs={12}>
